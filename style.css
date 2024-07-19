@@ -1,0 +1,22 @@
+.todo-categories {
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+#filter-slider-container {
+  width: 100%; /* Adjust as needed */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+  user-select: none;
+  cursor: grab;
+}
+#filter-slider-container.active {
+  cursor: grabbing;
+}
+
+#filter-slider {
+  display: flex;
+  gap: 1rem;
+}
+
+#filter-slider-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers */
+}
