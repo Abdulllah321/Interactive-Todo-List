@@ -23,8 +23,8 @@
 
     <main class="max-w-2xl px-4 mx-auto py-6">
         <!-- Filter Slider Section -->
-        <section id="filter-slider-container" class="overflow-x-auto whitespace-nowrap mb-6">
-            <div id="filter-slider" class="flex gap-2 pt-5 pb-10">
+        <section id="filter-slider-container" class="overflow-x-auto mx-auto whitespace-nowrap mb-6">
+            <div id="filter-slider" class="flex gap-2 pt-5 pb-10 mx-auto">
                 <!-- Slider items will be injected here by JavaScript -->
             </div>
         </section>
@@ -36,6 +36,18 @@
             </ul>
         </section>
 
+        <section class="relative">
+            <div class="absolute left-0 top-0 bg-gradient-to-r from-white/80 from-70% to-transparent w-10 h-full z-30">
+            </div>
+            <div class="absolute right-0 top-0 bg-gradient-to-l from-white/80 from-70% to-transparent w-10 h-full z-30">
+            </div>
+            <div id="suggestion-slider-container" class="overflow-x-auto whitespace-nowrap mb-6 relative">
+                <div id="suggestion-slider" class="flex gap-4 pt-2 pb-10 relative">
+                    <!-- suggestion Todos items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
         <!-- Floating Action Button -->
         <button
             class="plus-icon p-3 bg-blue-400 w-12 h-12 flex items-center justify-center text-white rounded-full fixed bottom-4 right-4 cursor-pointer z-20 transition-all duration-300">
@@ -43,9 +55,9 @@
         </button>
 
         <!-- Todo Adding Section -->
-        <section id="todo-add-section" class="w-[100vw] h-[100vh] fixed top-0 left-0 todo-add hidden">
+        <section id="todo-add-section" class="w-[100vw] h-[100vh] fixed top-0 left-0 todo-add hidden z-50">
             <div id="bg-light" class="bg-black/30 w-full h-full absolute top-0 left-0"></div>
-            <div class="bg-white rounded-md relative z-10 px-4 py-12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            <div class="bg-white rounded-md z-10 px-4 py-12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style="width: calc(100% - 2rem);">
                 <label class="block text-gray-700 text-lg font-semibold mb-1" for="todo-input" id="todo-label">
                     Write Todo Task
@@ -71,8 +83,6 @@
         <p class="text-gray-600">© 2024 Todo List Application</p>
     </footer>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 

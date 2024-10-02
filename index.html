@@ -2,60 +2,91 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 
 <body>
-    <header class="bg-blue-400 py-4">
-        <div class="max-w-2xl mx-auto px-4">
-            <button
-                class="plus-icon p-3 bg-blue-400 w-12 h-12 flex items-center justify-center text-white rounded-full fixed bottom-4 right-4 cursor-pointer z-20 transition-all duration-300">
-                <i class="fa-solid fa-plus"></i>
-            </button>
+  <header class="py-4 bg-blue-400">
+    <div class="max-w-2xl px-4 mx-auto">
+      <button
+        class="fixed z-20 flex items-center justify-center w-12 h-12 p-3 text-white transition-all duration-300 bg-blue-400 rounded-full cursor-pointer plus-icon bottom-4 right-4">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Message and Description Section -->
+  <section class="py-6 bg-white shadow-sm">
+    <div class="max-w-2xl px-4 mx-auto text-center">
+      <h1 class="mb-2 text-3xl font-semibold">Welcome to Your Todo List</h1>
+      <p class="mb-4 text-gray-700">Organize your tasks and boost your productivity. Please sign in to access and manage
+        your personalized todo lists.</p>
+      <!-- <button id="openLoginPopup"
+        class="px-4 py-2 mt-2 text-white transition-all duration-300 bg-blue-500 rounded-lg shadow-md hover:bg-blue-700">
+        Sign In
+      </button> -->
+    </div>
+  </section>
+
+  <main class="max-w-2xl px-4 py-6 mx-auto">
+    <!-- Todo Categories Section -->
+    <section class="grid gap-6 todo-categories place-items-center my-28">
+      <!-- Categories will be dynamically injected here -->
+    </section>
+    <!-- Todo Adding Section -->
+    <section id="todo-add-section" class="w-[100vw] h-[100vh] fixed top-0 left-0 todo-add hidden z-50">
+      <div id="bg-light" class="absolute top-0 left-0 w-full h-full bg-black/30"></div>
+      <div class="absolute z-10 px-4 py-12 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2"
+        style="width: calc(100% - 2rem);">
+        <label class="block mb-1 text-lg font-semibold text-gray-700" for="todo-input" id="todo-label">
+          Write Todo Task
+        </label>
+        <input name="todo-input" id="todo-input" type="text"
+          class="w-full px-3 py-2 transition-all duration-300 bg-white border border-gray-400 rounded-md focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Todo Here">
+        <select name="category" id="category"
+          class="w-full px-3 py-2 mt-2 transition-all duration-300 bg-white border border-gray-400 rounded-md focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400">
+          <!-- Categories will be dynamically injected here -->
+        </select>
+        <select name="subcategory" id="subcategory"
+          class="w-full px-3 py-2 mt-2 transition-all duration-300 bg-white border border-gray-400 rounded-md cursor-not-allowed focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400 opacity-30">
+          <option value="" disabled selected>First select a category</option>
+        </select>
+        <button id="add-todo" class="w-full py-2 mt-2 text-white bg-blue-400 rounded-md">Add Todo</button>
+      </div>
+    </section>
+
+    <!-- Signup Authentication -->
+    <div id="popup" class="fixed inset-0 items-center justify-center hidden bg-gray-800 bg-opacity-75">
+      <div class="p-6 transition-transform transform scale-75 bg-white rounded-lg shadow-xl">
+        <div class="text-right">
+          <button id="closePopup" class="text-gray-500 hover:text-gray-700">&times;</button>
         </div>
-    </header>
+        <div class="text-center">
+          <h2 class="mb-4 text-2xl font-semibold">Sign In</h2>
+          <button id="googleSignIn"
+            class="flex items-center justify-center w-full px-4 py-2 mb-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50">
+            <i class="mr-2 fab fa-google"></i> Sign in with Google
+          </button>
+          <button id="facebookSignIn"
+            class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50">
+            <i class="mr-2 fab fa-facebook"></i> Sign in with Facebook
+          </button>
+        </div>
+      </div>
+    </div>
 
-    <main class="max-w-2xl px-4 mx-auto py-6">
-        <!-- Todo Categories Section -->
-        <section class="todo-categories grid place-items-center gap-6 my-28">
-            <!-- Categories will be dynamically injected here -->
-        </section>
+  </main>
 
-        <!-- Todo Adding Section -->
-        <section id="todo-add-section" class="w-[100vw] h-[100vh] fixed top-0 left-0 todo-add hidden">
-            <div id="bg-light" class="bg-black/30 w-full h-full absolute top-0 left-0"></div>
-            <div class="bg-white rounded-md relative z-10 px-4 py-12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style="width: calc(100% - 2rem);">
-                <label class="block text-gray-700 text-lg font-semibold mb-1" for="todo-input" id="todo-label">
-                    Write Todo Task
-                </label>
-                <input name="todo-input" id="todo-input" type="text"
-                    class="w-full px-3 py-2 bg-white border border-gray-400 rounded-md transition-all duration-300 focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400"
-                    placeholder="Todo Here">
-                <select name="category" id="category"
-                    class="w-full px-3 py-2 bg-white border border-gray-400 rounded-md transition-all duration-300 focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400 mt-2">
-                    <!-- Categories will be dynamically injected here -->
-                </select>
-                <select name="subcategory" id="subcategory"
-                    class="w-full px-3 py-2 bg-white border border-gray-400 rounded-md transition-all duration-300 focus:outline-none ring-transparent ring-2 focus:ring-blue-400 focus:border-blue-400 mt-2 cursor-not-allowed opacity-30">
-                    <option value="" disabled selected>First select a category</option>
-                </select>
-                <button id="add-todo" class="py-2 w-full rounded-md bg-blue-400 text-white mt-2">Add Todo</button>
-            </div>
-        </section>
-    </main>
+  <footer class="py-4 text-center bg-gray-100">
+    <p class="text-gray-600">© 2024 Todo List Application</p>
+  </footer>
 
-    <footer class="bg-gray-100 py-4 text-center">
-        <p class="text-gray-600">© 2024 Todo List Application</p>
-    </footer>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 
 </body>
 

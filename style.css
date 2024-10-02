@@ -1,14 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .todo-categories {
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 }
-#filter-slider-container {
+#filter-slider-container,
+#suggestion-slider-container {
   width: 100%; /* Adjust as needed */
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
   user-select: none;
   cursor: grab;
 }
-#filter-slider-container.active {
+#filter-slider-container.active,
+#suggestion-slider-container.active {
   cursor: grabbing;
 }
 
@@ -17,6 +23,7 @@
   gap: 1rem;
 }
 
-#filter-slider-container::-webkit-scrollbar {
+#filter-slider-container::-webkit-scrollbar,
+#suggestion-slider-container::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Webkit browsers */
 }
